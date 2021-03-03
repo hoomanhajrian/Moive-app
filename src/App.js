@@ -39,27 +39,8 @@ TabPanel.propTypes = {
 
 
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-  },
-  appName: {
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    marginTop: '20px',
-    marginBottom: '20px',
-    width: '95%',
-  },
-  header: {
-    textAlign: 'center'
-  },
-  mainContainer: {
-    margin: '20px'
-  }
-}));
 
-export default function App() {
+const App = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -92,3 +73,32 @@ export default function App() {
     </div>
   );
 }
+
+
+export default App;
+
+
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper,
+  },
+  appName: {
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: '20px',
+    marginBottom: '20px',
+    width: '95%',
+    borderRadius: '15px',
+    color: 'red',
+    background: 'black'
+  },
+  header: {
+    textAlign: 'center'
+  },
+  mainContainer: {
+    margin: '20px'
+  }
+}));
