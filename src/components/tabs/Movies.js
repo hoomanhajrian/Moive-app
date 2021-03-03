@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 
 import Loading from '../Loading';
-import Movie from '../MovieContainer';
+import MovieContainer from '../MovieContainer';
 import { getMovies } from '../../Services/Services';
-
+import Box from '@material-ui/core/Box';
 
 
 export default class Movies extends Component {
@@ -28,12 +28,9 @@ export default class Movies extends Component {
     render() {
         const { isLoading, movies } = this.state
         return (
-            <div>
-                <header><h1>Movies</h1></header>
-                <div>
-                    {isLoading ? <Loading /> : <Movie movies={movies} />}
-                </div>
-            </div>
+            <Box>
+                {isLoading ? <Loading /> : this.fetchMovies(), <MovieContainer movies={movies} />}
+            </Box>
         )
     }
 

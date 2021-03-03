@@ -24,19 +24,10 @@ const getStyles = makeStyles(theme => ({
 
 const MovieCard = props => {
     const classes = getStyles();
-    const { id, imageUrl, label, source, uri } = props
-
-    // const { key, title, poster_path } = props
+    const { id, key, title, poster_path } = props
     return (
-        <Card className={classes.card}>
-            <Card key={id}>
-                <CardHeader title={label} subheader={source} />
-                <CardMedia className={classes.media} image={imageUrl} label={label} />
-                <CardActions>
-                    <Button size='small' color='primary'>
-                    </Button>
-                </CardActions>
-            </Card>
+        <Card key={id} className={classes.card}>
+            <CardHeader title={title} />
         </Card>
     )
 }
