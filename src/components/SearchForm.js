@@ -32,32 +32,14 @@ const doSomething = () => {
 const SearchForm = () => {
     const classes = getStyles();
     return (
-        <form onSubmit={doSomething} className={classes.root}>
+        <FormControl onSubmit={doSomething} className={classes.root}>
             <TextField
                 label="Search"
-                labelId="select-label"
+                labelid="select-label"
                 variant="outlined"
                 className={classes.TextField}
             />
-            <Select
-                variant="outlined"
-                labelId="select-label"
-                id="simple-select"
-                defaultValue="multi"
-                className={classes.Select}
-            >
-                <MenuItem value={"multi"}>Multi</MenuItem>
-                <MenuItem value={"movies"}>Movies</MenuItem>
-                <MenuItem value={"tv"}>TV Shows</MenuItem>
-            </Select>
-
-            <Button
-                variant="contained"
-                type="submit"
-            >
-                Search
-            </Button>
-        </form>
+        </FormControl>
     )
 
 }

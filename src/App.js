@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import SearchForm from './components/SearchForm';
 import Movies from './components/tabs/Movies';
@@ -24,7 +23,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p={3}>
-          <Typography>{children}</Typography>
+          {children}
         </Box>
       )}
     </div>
@@ -49,8 +48,8 @@ const App = () => {
   };
 
   return (
-    <div className={classes.root}>
-      <Box border={1} className={classes.appName}><h1 className={classes.header}>React Movie App</h1></Box>
+    <Box className={classes.root}>
+      <Box border={1} className={classes.appName}><h1 className={classes.header}>Movie App</h1></Box>
       <SearchForm />
       <Box border={1} className={classes.mainContainer}>
         <AppBar position="static" variant="outlined" >
@@ -70,7 +69,7 @@ const App = () => {
           <Tv />
         </TabPanel>
       </Box>
-    </div>
+    </Box>
   );
 }
 
