@@ -17,7 +17,6 @@ const Movies = () => {
     const [page, changePage] = useState(1);
 
     const filterMovies = (e) => {
-        console.log(orgData.results);
         const target = e.target.value;
         if (target === '') {
             updateMovies(orgData.results);
@@ -44,6 +43,7 @@ const Movies = () => {
                 result => {
                     updateOrgData(result);
                     updateMovies(result.results);
+                    console.log(orgData);
                 }
             )
             .catch(
@@ -71,7 +71,7 @@ const Movies = () => {
                     <NavigateNextIcon onClick={nextPage} />
                 </Box>
             </Box>
-            <Box className={classes.movies} sx={{ gridTemplateColumns: movies.length > 1 ? '1fr 1fr' : '1fr 1fr 1fr' }}>
+            <Box className={classes.movies} sx={{ gridTemplateColumns: movies.length > 0 ? '1fr 1fr' : '1fr 1fr 1fr' }}>
                 {
                     movies.length < 1 ?
                         <Loading />
@@ -98,6 +98,7 @@ const getStyles = makeStyles(theme => ({
     },
     pageChanger: {
         display: 'flex',
+        justifyContent: 'space-between',
         flexDirection: 'row',
         alignItems: 'center',
         margin: 'auto'
