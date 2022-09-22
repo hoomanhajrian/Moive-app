@@ -17,7 +17,18 @@ const Movies = () => {
     const [page, changePage] = useState(1);
 
     const filterMovies = (e) => {
-        console.log(e.target.value);
+        console.log(orgData.results);
+        const target = e.target.value;
+        if (target === '') {
+            updateMovies(orgData.results);
+        }
+        else {
+            let filteredData = orgData.results.filter((movie) => {
+                return movie.title.toLowerCase().includes(target.toLowerCase());
+            });
+            updateMovies(filteredData);
+
+        }
     };
 
     const prePage = () => {
@@ -46,13 +57,13 @@ const Movies = () => {
 
     return (
         <>
-            <Box variant='div'>
+            <Box variant='div' className={classes.searchPageWrapper}>
                 <TextField
                     onChange={filterMovies}
                     label="Search"
                     labelid="select-label"
                     variant="outlined"
-                    className={classes.TextField}
+                    className={classes.searchField}
                 />
                 <Box className={classes.pageChanger}>
                     <NavigateBeforeIcon onClick={prePage} />
@@ -81,14 +92,20 @@ const getStyles = makeStyles(theme => ({
         display: 'grid',
         gridGap: '3rem'
     },
-    TextField: {
+    searchField: {
         marginLeft: '2rem',
-        width: '30%'
+        width: '80%'
     },
     pageChanger: {
         display: 'flex',
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
+        margin: 'auto'
+    },
+    searchPageWrapper: {
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+
     }
 }))
 

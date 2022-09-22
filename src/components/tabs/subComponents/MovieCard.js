@@ -16,12 +16,18 @@ const getStyles = makeStyles(theme => ({
     },
     wrapper: {
         padding: '.5rem'
+    },
+    title: {
+        '&:nextchild': {
+            color: 'white'
+        }
     }
 }))
 
 const MovieCard = props => {
     const classes = getStyles();
-    const { title, release_date, poster_path, backdrop_path, adult, overview, original_language, vote_average, vote_count } = props.data;
+    const { id, title, release_date, poster_path, backdrop_path, adult, overview, original_language, vote_average, vote_count } = props.data;
+    const history = useHistory();
 
     const onCardClick = (e) => {
         e.preventDefault();
@@ -31,8 +37,8 @@ const MovieCard = props => {
 
 
     return (
-        <Card className={classes.card}>
-            <CardActionArea onClick={onCardClick}>
+        <Card className={classes.card} >
+            <CardActionArea id={id} onClick={onCardClick}>
                 <CardHeader title={title} subheader={`Release Date: ${release_date}`} className={classes.title} />
                 {adult ? <NoAdultContentIcon /> : <></>}
             </CardActionArea>

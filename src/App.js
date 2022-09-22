@@ -6,7 +6,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import Movies from './components/tabs/Movies';
-import Search from './components/tabs/Search';
+import Watch from './components/tabs/Watch';
 import Tv from './components/tabs/Tv';
 import { Typography } from '@material-ui/core';
 
@@ -54,7 +54,7 @@ const App = () => {
         <AppBar position="static" variant="outlined" className={classes.appBar}>
           <Tabs variant="fullWidth" indicatorColor="secondary" value={value} onChange={handleChange} aria-label="tabs">
             <Tab label="Movies" />
-            <Tab label="Search" />
+            <Tab label="Watch" />
             <Tab label="Tv Shows" />
           </Tabs>
         </AppBar>
@@ -62,7 +62,7 @@ const App = () => {
           <Movies />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <Search />
+          <Watch />
         </TabPanel>
         <TabPanel value={value} index={2}>
           <Tv />
