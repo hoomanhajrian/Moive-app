@@ -36,9 +36,6 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired,
 };
 
-
-
-
 const App = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
@@ -49,7 +46,9 @@ const App = () => {
 
   return (
     <Box className={classes.root}>
-      <Box border={1} className={classes.appName}><Typography variant='h2' className={classes.header}>Movie App</Typography></Box>
+      <Box border={1} className={classes.appHeader}>
+        <Typography variant='h2' className={classes.header}>Movie Time</Typography>
+      </Box>
       <Box border={1} className={classes.mainContainer}>
         <AppBar position="static" variant="outlined" className={classes.appBar}>
           <Tabs variant="fullWidth" indicatorColor="secondary" value={value} onChange={handleChange} aria-label="tabs">
@@ -86,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
     margin: '0',
     padding: '0'
   },
-  appName: {
+  appHeader: {
     marginLeft: 'auto',
     marginRight: 'auto',
     background: 'black'
