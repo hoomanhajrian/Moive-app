@@ -1,14 +1,20 @@
 import React, { Component } from "react";
-import axios from 'axios';
-import { APP_KEY, SEARCH_URL } from '../../config/api_config';
+import CommentsAndLikes from './subComponents/CommentsAndLikes';
 
 
+const Watch = () => {
 
-export default class Watch extends Component {
+    return (
+        <div>
+            <video width="100%" height="auto" controls>
+                <source src="movie.mp4" type="video/mp4" />
+                <source src="movie.ogg" type="video/ogg" />
+                Your browser does not support the video tag.
+            </video>
+            <CommentsAndLikes />
+        </div>
+    )
 
-    render() {
-        return (
-            <div><video controls /></div>
-        )
-    }
-}
+};
+
+export default Watch;
