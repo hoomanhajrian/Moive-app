@@ -3,13 +3,25 @@ import Box from '@mui/material/Box';
 import CircularProgress, {
     circularProgressClasses,
 } from '@mui/material/CircularProgress';
+import { makeStyles } from '@material-ui/styles';
+
+
+const getStyles = makeStyles(theme => ({
+    loading: {
+        gridColumn: 2,
+        margin: 'auto'
+    }
+}))
 
 
 
 const Loading = () => {
 
+    const classes = getStyles();
+
     return (
         <CircularProgress
+            className={classes.loading}
             variant="indeterminate"
             disableShrink
             sx={{

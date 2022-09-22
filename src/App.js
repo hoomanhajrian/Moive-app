@@ -5,10 +5,10 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
-import SearchForm from './components/SearchForm';
 import Movies from './components/tabs/Movies';
 import Search from './components/tabs/Search';
 import Tv from './components/tabs/Tv';
+import { Typography } from '@material-ui/core';
 
 
 function TabPanel(props) {
@@ -49,10 +49,9 @@ const App = () => {
 
   return (
     <Box className={classes.root}>
-      <Box border={1} className={classes.appName}><h1 className={classes.header}>Movie App</h1></Box>
-      <SearchForm />
+      <Box border={1} className={classes.appName}><Typography variant='h2' className={classes.header}>Movie App</Typography></Box>
       <Box border={1} className={classes.mainContainer}>
-        <AppBar position="static" variant="outlined" >
+        <AppBar position="static" variant="outlined" className={classes.appBar}>
           <Tabs variant="fullWidth" indicatorColor="secondary" value={value} onChange={handleChange} aria-label="tabs">
             <Tab label="Movies" />
             <Tab label="Search" />
@@ -83,21 +82,24 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
+    width: '100%',
+    margin: '0',
+    padding: '0'
   },
   appName: {
     marginLeft: 'auto',
     marginRight: 'auto',
-    marginTop: '20px',
-    marginBottom: '20px',
-    width: '95%',
-    borderRadius: '15px',
-    color: 'red',
     background: 'black'
   },
   header: {
-    textAlign: 'center'
+    textAlign: 'center',
+    margin: '0',
+    padding: '1rem',
+    border: 'none',
+    color: 'white'
   },
-  mainContainer: {
-    margin: '20px'
+  appBar: {
+    backgroundColor: 'black',
+    border: 'none'
   }
 }));
