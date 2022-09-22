@@ -61,7 +61,14 @@ const Movies = () => {
                 <TextField
                     onChange={filterMovies}
                     label="Search"
-                    labelid="select-label"
+                    labelid="filter-movies"
+                    variant="outlined"
+                    className={classes.searchField}
+                />
+                <TextField
+                    onChange={e => changePage(e.target.value === '' ? 1 : e.target.value)}
+                    label={page}
+                    labelid="page-changer"
                     variant="outlined"
                     className={classes.searchField}
                 />
@@ -98,14 +105,15 @@ const getStyles = makeStyles(theme => ({
     },
     pageChanger: {
         display: 'flex',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
         flexDirection: 'row',
         alignItems: 'center',
-        margin: 'auto'
+        margin: 'auto',
+        fontSize: '10px'
     },
     searchPageWrapper: {
         display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
+        gridTemplateColumns: '50% 20% 30%',
 
     }
 }))
