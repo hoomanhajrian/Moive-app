@@ -41,11 +41,16 @@ const getStyles = makeStyles(theme => ({
         paddingLeft: '0'
     },
     cardActionArea: {
-        padding: '1rem',
         textAlign: 'center',
         background: 'darkred',
         borderRadius: '15px',
-
+        '& :hover': {
+            background: 'red',
+            borderRadius: '15px',
+        },
+        '& h4': {
+            padding: '1rem',
+        }
     },
     cardMedia: {
         borderRadius: '15px'
