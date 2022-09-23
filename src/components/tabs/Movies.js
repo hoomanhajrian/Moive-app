@@ -4,7 +4,7 @@ import MovieCard from './subComponents/MovieCard';
 import { getMovies } from '../../Services/Services';
 import Loading from '../Loading';
 import { Box } from '@mui/material';
-import { TextField, Typography } from '@material-ui/core';
+import { Container, TextField, Typography } from '@material-ui/core';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 
@@ -31,24 +31,26 @@ const Movies = () => {
     };
 
     const prePage = () => {
-        if (page > 1) changePage(page - 1);
+        if (page > 1) changePage(Number(page) - 1);
     }
     const nextPage = () => {
-        if (page < orgData.total_pages) changePage(page + 1);
+        if (page < orgData.total_pages) changePage(Number(page) + 1);
     }
 
     useEffect(() => {
+        const pageField = document.getElementById("page-changer");
+
         getMovies(page)
             .then(
                 result => {
                     updateOrgData(result);
                     updateMovies(result.results);
-                    console.log(orgData);
                 }
             )
             .catch(
                 (err) => console.log(err)
             );
+        pageField.value = page;
     }, [page]);
 
 
@@ -56,7 +58,7 @@ const Movies = () => {
     console.log();
 
     return (
-        <>
+        <Container variant='div'>
             <Box variant='div' className={classes.searchPageWrapper}>
                 <TextField
                     onChange={filterMovies}
@@ -65,20 +67,26 @@ const Movies = () => {
                     variant="outlined"
                     className={classes.searchField}
                 />
-                <TextField
-                    onChange={e => changePage(e.target.value === '' ? 1 : e.target.value)}
-                    label={page}
-                    labelid="page-changer"
-                    variant="outlined"
-                    className={classes.searchField}
-                />
-                <Box className={classes.pageChanger}>
-                    <NavigateBeforeIcon onClick={prePage} />
-                    <Typography variant='h6'>{page} / {orgData.total_pages}</Typography>
-                    <NavigateNextIcon onClick={nextPage} />
+                <Box className={classes.pageWrapper}>
+                    <TextField
+                        onChange={e => changePage(e.target.value === '' ? 1 : Number(e.target.value))}
+                        label='Page'
+                        id='page-changer'
+                        labelid="page-changer"
+                        InputProps={{ inputProps: { min: 1, max: orgData.total_pages } }}
+                        type="number"
+                        defaultValue={1}
+                        variant="outlined"
+                        className={classes.searchField}
+                    />
+                    <Box className={classes.pageChanger}>
+                        <NavigateBeforeIcon onClick={prePage} />
+                        <Typography variant='h6'>{page} / {orgData.total_pages}</Typography>
+                        <NavigateNextIcon onClick={nextPage} />
+                    </Box>
                 </Box>
             </Box>
-            <Box className={classes.movies} sx={{ gridTemplateColumns: movies.length > 0 ? '1fr 1fr' : '1fr 1fr 1fr' }}>
+            <Box className={classes.movies} >
                 {
                     movies.length < 1 ?
                         <Loading />
@@ -88,7 +96,7 @@ const Movies = () => {
                         })
                 }
             </Box>
-        </>
+        </Container>
     )
 }
 
@@ -97,11 +105,17 @@ const getStyles = makeStyles(theme => ({
     movies: {
         padding: '2rem',
         display: 'grid',
-        gridGap: '3rem'
-    },
-    searchField: {
-        marginLeft: '2rem',
-        width: '80%'
+        gridGap: '3rem',
+        [theme.breakpoints.up('lg')]: {
+            gridTemplateColumns: '1fr 1fr 1fr'
+        },
+        [theme.breakpoints.down('md')]: {
+            gridTemplateColumns: '1fr 1fr'
+        },
+        [theme.breakpoints.down('sm')]: {
+            gridTemplateColumns: '1fr'
+        }
+
     },
     pageChanger: {
         display: 'flex',
@@ -113,8 +127,14 @@ const getStyles = makeStyles(theme => ({
     },
     searchPageWrapper: {
         display: 'grid',
-        gridTemplateColumns: '50% 20% 30%',
-
+        gridTemplateColumns: '1fr 1fr',
+        gridGap: '3rem',
+        margin: '2rem'
+    },
+    pageWrapper: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center'
     }
 }))
 

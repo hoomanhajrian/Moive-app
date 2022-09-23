@@ -12,7 +12,7 @@ import { Typography } from '@material-ui/core';
 
 
 function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+  const { children, value, index } = props;
 
   return (
     <div
@@ -45,7 +45,7 @@ const App = () => {
   };
 
   return (
-    <Box className={classes.root}>
+    <Box variant='main' className={classes.root}>
       <Box border={1} className={classes.appHeader}>
         <Typography variant='h2' className={classes.header}>Movie Time</Typography>
       </Box>
@@ -88,17 +88,17 @@ const useStyles = makeStyles((theme) => ({
   appHeader: {
     marginLeft: 'auto',
     marginRight: 'auto',
-    background: 'black'
+    background: 'black',
   },
   header: {
     textAlign: 'center',
     margin: '0',
     padding: '1rem',
     border: 'none',
-    color: 'white'
+    color: 'white',
   },
   appBar: {
     backgroundColor: 'black',
-    border: 'none'
+    border: 'none',
   }
 }));

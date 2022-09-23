@@ -5,7 +5,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import { CardActionArea, Typography, Box, CardContent, Collapse } from '@material-ui/core';
 import NoAdultContentIcon from '@mui/icons-material/NoAdultContent';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
@@ -27,27 +27,34 @@ const ExpandMore = styled((props) => {
 
 const getStyles = makeStyles(theme => ({
     card: {
-        height: '100%',
+        height: 'auto',
         backgroundColor: '#1b1b1b',
         color: 'white',
         padding: '1rem',
-        borderRadius: '15px'
+        borderRadius: '15px',
     },
     wrapper: {
         padding: '.5rem'
     },
     title: {
-        color: 'white'
+        color: 'white',
+        paddingLeft: '0'
     },
     cardActionArea: {
         padding: '1rem',
-        textAlign: 'center'
+        textAlign: 'center',
+        background: 'darkred',
+        borderRadius: '15px',
+
+    },
+    cardMedia: {
+        borderRadius: '15px'
     }
 }))
 
 const MovieCard = props => {
     const classes = getStyles();
-    const { id, title, release_date, poster_path, backdrop_path, adult, overview, original_language, vote_average, vote_count } = props.data;
+    const { id, title, release_date, backdrop_path, adult, overview, original_language, vote_average, vote_count } = props.data;
     const [expanded, setExpanded] = React.useState(false);
 
     const handleExpandClick = () => {
@@ -56,7 +63,7 @@ const MovieCard = props => {
 
 
 
-    const history = useHistory();
+    // const history = useHistory();
 
     const onCardClick = (e) => {
         e.preventDefault();
@@ -68,9 +75,10 @@ const MovieCard = props => {
     return (
         <Card className={classes.card} variant="outlined">
             <CardContent>
-                <CardHeader title={title} subheaderTypographyProps={{ color: 'white' }} subheader={`Release Date: ${release_date}`} className={classes.title} />
+                <CardHeader title={title} subheaderTypographyProps={{ color: 'inherit' }} subheader={`Release Date: ${release_date}`} className={classes.title} />
                 {adult ? <NoAdultContentIcon /> : <></>}
                 <CardMedia
+                    className={classes.cardMedia}
                     component="img"
                     height="auto"
                     image={`https://image.tmdb.org/t/p/original/${backdrop_path}`} alt={title}

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import CircularProgress, {
     circularProgressClasses,
 } from '@mui/material/CircularProgress';
@@ -8,7 +7,6 @@ import { makeStyles } from '@material-ui/styles';
 
 const getStyles = makeStyles(theme => ({
     loading: {
-        gridColumn: 2,
         margin: 'auto'
     }
 }))
