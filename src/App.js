@@ -8,8 +8,9 @@ import Box from '@material-ui/core/Box';
 import Movies from './components/tabs/Movies';
 import Watch from './components/tabs/Watch';
 import Tv from './components/tabs/Tv';
-import { Typography } from '@material-ui/core';
-
+import './App.css';
+import logoSmall from './headerImages/site-title-small.png';
+import logoBig from './headerImages/site-title.png';
 
 function TabPanel(props) {
   const { children, value, index } = props;
@@ -46,12 +47,15 @@ const App = () => {
 
   return (
     <Box variant='main' className={classes.root}>
-      <Box border={1} className={classes.appHeader}>
-        <Typography variant='h2' className={classes.header}>Movie Time</Typography>
+      <Box variant='header' className={classes.appHeader}>
+        <picture className={classes.header}>
+          <source srcSet={logoSmall} width='80px' media="(max-width: 900px)"></source>
+          <img src={logoBig} width='350px' alt="movie-time-logo" />
+        </picture>
       </Box>
-      <Box border={1} className={classes.mainContainer}>
-        <AppBar position="static" variant="outlined" className={classes.appBar}>
-          <Tabs variant="fullWidth" indicatorColor="secondary" value={value} onChange={handleChange} aria-label="tabs">
+      <Box className={classes.mainContainer}>
+        <AppBar position="static" className={classes.appBar}>
+          <Tabs variant="fullWidth" indicatorColor='secondary' value={value} onChange={handleChange} aria-label="tabs">
             <Tab label="Movies" />
             <Tab label="Watch" />
             <Tab label="Tv Shows" />
@@ -86,16 +90,18 @@ const useStyles = makeStyles((theme) => ({
     padding: '0'
   },
   appHeader: {
-    marginLeft: 'auto',
-    marginRight: 'auto',
     background: 'black',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    padding: '0 2rem',
   },
   header: {
     textAlign: 'center',
     margin: '0',
     padding: '1rem',
     border: 'none',
-    color: 'white',
   },
   appBar: {
     backgroundColor: 'black',
