@@ -15,6 +15,7 @@ const Movies = () => {
     const [movies, updateMovies] = useState([]);
     const [orgData, updateOrgData] = useState({});
     const [page, changePage] = useState(1);
+    const [isLoading, setLoading] = useState(true);
 
     const filterMovies = (e) => {
         const target = e.target.value;
@@ -39,19 +40,21 @@ const Movies = () => {
 
     useEffect(() => {
         const pageField = document.getElementById("page-changer");
-
+        setLoading(true);
         getMovies(page)
             .then(
                 result => {
                     updateOrgData(result);
                     updateMovies(result.results);
+                    setLoading(false);
                 }
             )
             .catch(
                 (err) => console.log(err)
             );
-        pageField.value = page;
+        if (pageField) pageField.value = page;
     }, [page]);
+
 
     return (
         <Container variant='div'>
@@ -82,16 +85,19 @@ const Movies = () => {
                     </Box>
                 </Box>
             </Box>
-            <Box className={classes.movies} >
-                {
-                    movies.length < 1 ?
-                        <Loading />
-                        :
-                        movies.map((movie) => {
-                            return <Box variant='div' key={movie.id} id={`movie${movie.id}`}><MovieCard data={movie} /></Box>
-                        })
-                }
-            </Box>
+            {!isLoading ?
+                <Box className={classes.movies} >
+                    {
+                        movies.length < 1 ?
+                            <Loading />
+                            :
+                            movies.map((movie) => {
+                                return <Box variant='div' key={movie.id} id={`movie${movie.id}`}><MovieCard data={movie} /></Box>
+                            })
+                    }
+                </Box>
+                :
+                <Loading />}
             <Box className={classes.pageWrapper}>
                 <Box className={classes.pageChanger}>
                     <NavigateBeforeIcon onClick={prePage} />

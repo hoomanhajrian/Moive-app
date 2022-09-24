@@ -60,7 +60,6 @@ const MovieCardFront = props => {
     const classes = getStyles();
     const { id, title, release_date, backdrop_path, adult, overview, original_language, vote_average, vote_count } = props.data;
     const [expanded, setExpanded] = useState(false);
-    const [cardFront, changeCardSide] = useState(true);
 
     const handleExpandClick = () => {
         setExpanded(!expanded);

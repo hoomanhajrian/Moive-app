@@ -7,7 +7,9 @@ import { makeStyles } from '@material-ui/styles';
 
 const getStyles = makeStyles(theme => ({
     loading: {
-        margin: 'auto'
+        display: 'block !important',
+        margin: 'auto',
+        marginBottom: '2rem'
     }
 }))
 

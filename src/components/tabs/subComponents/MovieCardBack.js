@@ -52,6 +52,15 @@ const getStyles = makeStyles(theme => ({
     },
     cardMedia: {
         borderRadius: '15px'
+    },
+    video: {
+        width: '100%'
+    },
+    likeFavWrapper: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        margin: '.5rem'
     }
 }))
 
@@ -77,8 +86,8 @@ const MovieCardBack = props => {
         <Card className={classes.card} variant="outlined">
             <Button color='secondary' onClick={rotateBack}>{`< Back`}</Button>
             <CardContent>
-                <video controls />
-                <Box>
+                <video controls className={classes.video} />
+                <Box className={classes.likeFavWrapper}>
                     {liked ? <ThumbUpIcon sx={{ color: 'lightblue' }} onClick={() => { changeLiked(!liked) }} /> : <ThumbUpOffAltIcon onClick={() => { changeLiked(!liked) }} />}
                     {favorite ? <FavoriteIcon sx={{ color: 'red' }} onClick={() => { changeFavorite(!favorite) }} /> : <FavoriteBorderIcon onClick={() => { changeFavorite(!favorite) }} />}
                 </Box>

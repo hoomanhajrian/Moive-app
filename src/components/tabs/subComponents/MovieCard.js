@@ -17,7 +17,7 @@ const MovieCard = (props) => {
             targets: movieCard,
             rotateY: 180,
             loop: false,
-            duration: 3000,
+            duration: 2000,
         });
     };
 
