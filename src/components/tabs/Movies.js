@@ -53,10 +53,6 @@ const Movies = () => {
         pageField.value = page;
     }, [page]);
 
-
-
-    console.log();
-
     return (
         <Container variant='div'>
             <Box variant='div' className={classes.searchPageWrapper}>

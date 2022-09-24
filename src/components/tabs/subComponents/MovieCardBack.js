@@ -10,9 +10,6 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import CardActions from '@mui/material/CardActions';
-import MovieCardFront from './MovieCardFront';
-import MovieCardBack from './MovieCardBack';
-
 
 
 
@@ -26,7 +23,6 @@ const ExpandMore = styled((props) => {
         duration: theme.transitions.duration.shortest,
     }),
 }));
-
 
 
 const getStyles = makeStyles(theme => ({
@@ -61,17 +57,14 @@ const getStyles = makeStyles(theme => ({
     }
 }))
 
-const MovieCard = (props) => {
+const MovieCardBack = props => {
     const classes = getStyles();
-    const [cardFront, changeCardSide] = useState(true);
-
-    const rotateCard = () => {
-        changeCardSide(!cardFront);
-    };
 
     return (
-        cardFront ? <MovieCardFront data={props.data} rotateCard={rotateCard} /> : <MovieCardBack rotateCard={rotateCard} />
+        <Card className={classes.card} variant="outlined">
+            <Button color='secondary' onClick={props.rotateCard}>{`< Back`}</Button>
+        </Card>
     )
-};
+}
 
-export default MovieCard;
+export default MovieCardBack;
