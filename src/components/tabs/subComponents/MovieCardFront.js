@@ -5,7 +5,6 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import { CardActionArea, Typography, Box, CardContent, Collapse, Button } from '@material-ui/core';
 import NoAdultContentIcon from '@mui/icons-material/NoAdultContent';
-// import { useHistory } from 'react-router-dom';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
@@ -67,8 +66,6 @@ const MovieCardFront = props => {
         setExpanded(!expanded);
     };
 
-
-    // const history = useHistory();
 
     const onCardClick = (e) => {
         e.preventDefault();
