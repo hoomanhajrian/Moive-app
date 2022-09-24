@@ -69,7 +69,6 @@ const MovieCardFront = props => {
 
     const onCardClick = (e) => {
         e.preventDefault();
-        console.log(e);
     }
 
 
@@ -101,7 +100,6 @@ const MovieCardFront = props => {
                     color='secondary'
                     onClick={props.rotateCard}
                 >
-                    {console.log(props)}
                     Watch trailer
                 </Button>
                 <ExpandMore

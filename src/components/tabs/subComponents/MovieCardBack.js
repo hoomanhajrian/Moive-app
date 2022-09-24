@@ -4,6 +4,7 @@ import Card from '@material-ui/core/Card';
 import { Button, CardContent } from '@material-ui/core';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
+import anime from 'animejs/lib/anime.es.js';
 
 
 
@@ -26,6 +27,7 @@ const getStyles = makeStyles(theme => ({
         color: 'white',
         padding: '1rem',
         borderRadius: '15px',
+        transform: 'rotateY(180deg);'
     },
     wrapper: {
         padding: '.5rem'
@@ -54,9 +56,22 @@ const getStyles = makeStyles(theme => ({
 const MovieCardBack = props => {
     const classes = getStyles();
 
+    const rotateBack = () => {
+
+        props.rotateCard();
+        const movieCard = document.querySelector(`#movie${props.data.id}`);
+
+        anime({
+            targets: movieCard,
+            rotateY: -360,
+            loop: false,
+            duration: 3000,
+        });
+    };
+
     return (
         <Card className={classes.card} variant="outlined">
-            <Button color='secondary' onClick={props.rotateCard}>{`< Back`}</Button>
+            <Button color='secondary' onClick={rotateBack}>{`< Back`}</Button>
             <CardContent>
                 <video controls />
             </CardContent>

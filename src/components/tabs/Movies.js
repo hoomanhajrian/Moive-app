@@ -88,7 +88,7 @@ const Movies = () => {
                         <Loading />
                         :
                         movies.map((movie) => {
-                            return <MovieCard data={movie} key={movie.id} />
+                            return <Box variant='div' key={movie.id} id={`movie${movie.id}`}><MovieCard data={movie} /></Box>
                         })
                 }
             </Box>
