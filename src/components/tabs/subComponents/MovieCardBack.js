@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
+import { Card, Box, Typography } from '@material-ui/core';
 import { Button, CardContent } from '@material-ui/core';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import anime from 'animejs/lib/anime.es.js';
-
-
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -54,6 +56,8 @@ const getStyles = makeStyles(theme => ({
 }))
 
 const MovieCardBack = props => {
+    const [liked, changeLiked] = useState(false);
+    const [favorite, changeFavorite] = useState(false);
     const classes = getStyles();
 
     const rotateBack = () => {
@@ -74,6 +78,13 @@ const MovieCardBack = props => {
             <Button color='secondary' onClick={rotateBack}>{`< Back`}</Button>
             <CardContent>
                 <video controls />
+                <Box>
+                    {liked ? <ThumbUpIcon sx={{ color: 'lightblue' }} onClick={() => { changeLiked(!liked) }} /> : <ThumbUpOffAltIcon onClick={() => { changeLiked(!liked) }} />}
+                    {favorite ? <FavoriteIcon sx={{ color: 'red' }} onClick={() => { changeFavorite(!favorite) }} /> : <FavoriteBorderIcon onClick={() => { changeFavorite(!favorite) }} />}
+                </Box>
+                <Typography>
+                    {props.data.overview}
+                </Typography>
             </CardContent>
         </Card>
     )
