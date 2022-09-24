@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import MovieCardFront from './MovieCardFront';
 import MovieCardBack from './MovieCardBack';
 
-
 const MovieCard = (props) => {
     const [cardFront, changeCardSide] = useState(true);
 

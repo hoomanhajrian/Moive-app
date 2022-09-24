@@ -92,6 +92,13 @@ const Movies = () => {
                         })
                 }
             </Box>
+            <Box className={classes.pageWrapper}>
+                <Box className={classes.pageChanger}>
+                    <NavigateBeforeIcon onClick={prePage} />
+                    <Typography variant='h6'>{page} / {orgData.total_pages}</Typography>
+                    <NavigateNextIcon onClick={nextPage} />
+                </Box>
+            </Box>
         </Container>
     )
 }
@@ -130,7 +137,8 @@ const getStyles = makeStyles(theme => ({
     pageWrapper: {
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        width: '100%'
     }
 }))
 

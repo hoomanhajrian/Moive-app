@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import { Button } from '@material-ui/core';
+import { Button, CardContent } from '@material-ui/core';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 
@@ -57,6 +57,9 @@ const MovieCardBack = props => {
     return (
         <Card className={classes.card} variant="outlined">
             <Button color='secondary' onClick={props.rotateCard}>{`< Back`}</Button>
+            <CardContent>
+                <video controls />
+            </CardContent>
         </Card>
     )
 }
