@@ -26,7 +26,7 @@ const ExpandMore = styled((props) => {
 
 const getStyles = makeStyles(theme => ({
     card: {
-        height: 'auto',
+        height: '100%',
         backgroundColor: '#1b1b1b',
         color: 'white',
         padding: '1rem',
@@ -52,7 +52,8 @@ const getStyles = makeStyles(theme => ({
         }
     },
     cardMedia: {
-        borderRadius: '15px'
+        borderRadius: '15px',
+
     }
 }))
 
@@ -77,12 +78,19 @@ const MovieCardFront = props => {
             <CardContent>
                 <CardHeader title={title} subheaderTypographyProps={{ color: 'inherit' }} subheader={`Release Date: ${release_date}`} className={classes.title} />
                 {adult ? <NoAdultContentIcon /> : <></>}
-                <CardMedia
-                    className={classes.cardMedia}
-                    component="img"
-                    height="auto"
-                    image={`https://image.tmdb.org/t/p/original/${backdrop_path}`} alt={title}
-                />
+                {adult ?
+                    <CardMedia
+                        className={classes.cardMedia}
+                        component="img"
+                        height="auto"
+                        image={`/adult.jpg`} alt={title}
+                    />
+                    : <CardMedia
+                        className={classes.cardMedia}
+                        component="img"
+                        height="auto"
+                        image={`https://image.tmdb.org/t/p/original/${backdrop_path}`} alt={title}
+                    />}
                 <Box className={classes.wrapper}>
                     <Typography variant="subtitle1" ><strong>Score/Votes: </strong>{vote_average} / {vote_count}</Typography>
                     <Typography variant="subtitle1" >
