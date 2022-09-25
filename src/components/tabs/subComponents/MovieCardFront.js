@@ -83,13 +83,21 @@ const MovieCardFront = props => {
                         className={classes.cardMedia}
                         component="img"
                         height="auto"
-                        image={`/adult.jpg`} alt={title}
+                        image={`/adult.jpg`}
+                        alt={title}
                     />
-                    : <CardMedia
+                    : backdrop_path === null ? <CardMedia
                         className={classes.cardMedia}
                         component="img"
                         height="auto"
-                        image={`https://image.tmdb.org/t/p/original/${backdrop_path}`} alt={title}
+                        image={`/no-image.png`}
+                        alt={title}
+                    /> : <CardMedia
+                        className={classes.cardMedia}
+                        component="img"
+                        height="auto"
+                        image={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
+                        alt={title}
                     />}
                 <Box className={classes.wrapper}>
                     <Typography variant="subtitle1" ><strong>Score/Votes: </strong>{vote_average} / {vote_count}</Typography>
