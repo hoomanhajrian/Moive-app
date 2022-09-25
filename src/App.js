@@ -6,7 +6,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import Movies from './components/tabs/Movies';
-import Watch from './components/tabs/Watch';
+import Community from './components/tabs/Community';
 import './App.css';
 import logoSmall from './headerImages/site-title-small.png';
 import logoBig from './headerImages/site-title.png';
@@ -58,7 +58,7 @@ const App = () => {
         <AppBar position="static" className={classes.appBar}>
           <Tabs variant="fullWidth" indicatorColor='secondary' value={value} onChange={handleChange} aria-label="tabs">
             <Tab label="Movies" />
-            <Tab label="Watch" />
+            <Tab label="Community" />
             <Tab label="Search All" />
             <Tab label="About" />
           </Tabs>
@@ -67,7 +67,7 @@ const App = () => {
           <Movies />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <Watch />
+          <Community />
         </TabPanel>
         <TabPanel value={value} index={2}>
           <Search />
