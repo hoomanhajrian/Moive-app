@@ -7,10 +7,11 @@ import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import Movies from './components/tabs/Movies';
 import Watch from './components/tabs/Watch';
-import Tv from './components/tabs/Tv';
 import './App.css';
 import logoSmall from './headerImages/site-title-small.png';
 import logoBig from './headerImages/site-title.png';
+import Search from './components/tabs/Search';
+import About from './components/tabs/About';
 
 function TabPanel(props) {
   const { children, value, index } = props;
@@ -58,7 +59,8 @@ const App = () => {
           <Tabs variant="fullWidth" indicatorColor='secondary' value={value} onChange={handleChange} aria-label="tabs">
             <Tab label="Movies" />
             <Tab label="Watch" />
-            <Tab label="Tv Shows" />
+            <Tab label="Search All" />
+            <Tab label="About" />
           </Tabs>
         </AppBar>
         <TabPanel value={value} index={0}>
@@ -68,7 +70,10 @@ const App = () => {
           <Watch />
         </TabPanel>
         <TabPanel value={value} index={2}>
-          <Tv />
+          <Search />
+        </TabPanel>
+        <TabPanel value={value} index={3}>
+          <About />
         </TabPanel>
       </Box>
     </Box>
