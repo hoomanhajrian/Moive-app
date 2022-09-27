@@ -58,8 +58,8 @@ const App = () => {
         <AppBar position="static" className={classes.appBar}>
           <Tabs variant="fullWidth" indicatorColor='secondary' value={value} onChange={handleChange} aria-label="tabs">
             <Tab label="Movies" />
-            <Tab label="Community" />
             <Tab label="Search All" />
+            <Tab label="Community" />
             <Tab label="About" />
           </Tabs>
         </AppBar>
@@ -67,10 +67,10 @@ const App = () => {
           <Movies />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <Community />
+          <Search />
         </TabPanel>
         <TabPanel value={value} index={2}>
-          <Search />
+          <Community />
         </TabPanel>
         <TabPanel value={value} index={3}>
           <About />

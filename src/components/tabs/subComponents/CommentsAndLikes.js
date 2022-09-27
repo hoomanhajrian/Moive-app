@@ -73,14 +73,8 @@ const getStyles = makeStyles(theme => ({
 
 const CommentsAndLikes = () => {
     const classes = getStyles();
-    const [favorite, changeFavorite] = useState(false);
-    const [liked, changeLiked] = useState(false);
     return (
         <Box className={classes.likesCommentsContainer}>
-            <Box className={classes.likesSection}>
-                {liked ? <ThumbUpIcon sx={{ color: 'lightblue' }} onClick={() => { changeLiked(!liked) }} /> : <ThumbUpOffAltIcon onClick={() => { changeLiked(!liked) }} />}
-                {favorite ? <FavoriteIcon sx={{ color: 'red' }} onClick={() => { changeFavorite(!favorite) }} /> : <FavoriteBorderIcon onClick={() => { changeFavorite(!favorite) }} />}
-            </Box>
             <Box className={classes.commentsSection}>
                 <Typography variant='h4'>Comments</Typography>
                 {comments.map(comment => {
